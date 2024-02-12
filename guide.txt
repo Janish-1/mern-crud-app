@@ -1,0 +1,43 @@
+Create the Project Structure:
+my-mern-app/
+├── client/        # Frontend code (React)
+|   ├── src/
+|   ├── public/
+|   ├── package.json   # Frontend package.json
+|
+├── server/        # Backend code (Node.js)
+|   ├── app.js
+|   ├── package.json   # Backend package.json
+|
+├── common/        # Shared code, configurations, etc.
+|
+├── package.json   # Root package.json (may contain shared dependencies)
+
+Initialize the Frontend (React):
+    In the client directory, run the following commands
+    -   npx create-react-app .
+
+Initialize the Backend (Node.js):
+    -
+        npm init -y
+        npm install express
+    -
+Configure Concurrent Development:
+
+    Install concurrently to run both the frontend and backend simultaneously:
+    npm install -D concurrently
+
+    Update the root package.json to include a script for running both parts concurrently:
+    -
+        "scripts": {
+        "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
+        "start:client": "cd client && npm start",
+        "start:server": "cd server && node app.js"
+        }
+    -
+
+Run the Application:
+
+    In the root directory, run:
+    -   npm start
+    This will start both the frontend and backend concurrently.
